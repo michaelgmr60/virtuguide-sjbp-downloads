@@ -19,7 +19,7 @@ addEventListener('scroll', () => {if (!scheduled) {scheduled=true;requestAnimati
 addEventListener('resize', updateNavigation, {passive:true}); updateNavigation();
 
 if ('IntersectionObserver' in window && !reducedMotion.matches) {
-  const items = document.querySelectorAll('.section-heading, .mode-panel, .detail-row > div, .marker-card, .steps > li, .download-section, .faqs');
+  const items = document.querySelectorAll('.section-heading, .gallery-heading, .gallery-grid > figure, .mode-panel, .detail-row > div, .marker-card, .steps > li, .download-section, .faqs');
   const observer = new IntersectionObserver(entries => {
     for (const entry of entries) if (entry.isIntersecting) {
       entry.target.classList.add('is-revealed');observer.unobserve(entry.target);
