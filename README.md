@@ -15,3 +15,7 @@ The original Elementary, Preschool, SHS and Campus images are in `assets/markers
 ## Static website
 
 This repository's root is a plain HTML/CSS/JavaScript website, suitable for GitHub Pages. No build or backend is required. The Unity project source is stored separately and is not included here.
+
+## Download counter
+
+The website shows GitHub release APK download totals, with five-minute caching and a refresh button. This measures download requests, not unique people. It never increments on a website click; only GitHub's recorded APK downloads are counted. No token or visitor tracking is used.
