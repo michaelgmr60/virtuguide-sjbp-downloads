@@ -90,3 +90,11 @@ model-viewer{position:absolute;inset:0;width:100%;height:100%;background:transpa
 .preview-toolbar button{padding:10px 12px;min-height:40px;border:1px solid #c4d8ee;background:white;color:#123b6e;border-radius:4px;font-size:11px;white-space:nowrap}.preview-toolbar button:hover{background:#e5f3ff}.pano-buttons{display:flex;gap:5px}.pano-buttons button{min-width:36px;padding:9px}.preview-noscript{font-size:11px;padding:10px 16px;color:#48617e}
 @media(max-width:1050px){.preview-toolbar{flex-wrap:wrap;gap:10px}.preview-toolbar>p{max-width:none}.mode-picture.interactive-picture{min-height:540px}.preview-stage{min-height:400px}}
 @media(max-width:760px){.mode-picture.interactive-picture{min-height:390px;aspect-ratio:auto}.preview-stage{height:320px;flex:auto;min-height:320px}.preview-toolbar{min-height:68px}.preview-toolbar>p{font-size:10px;max-width:195px}.preview-toolbar button{font-size:10px}.preview-badge{font-size:6px;top:12px;left:12px}.preview-load{font-size:12px;padding:14px 16px}.preview-load small{font-size:9px}}
+
+/* Feedback and administrator entry points remain visible on small screens. */
+.community-links{display:flex;justify-content:flex-end;align-items:center;gap:10px;padding-block:14px;border-bottom:1px solid #d3e3f4}
+.community-links a{display:inline-flex;align-items:center;justify-content:center;gap:24px;min-height:42px;padding:11px 18px;border:1px solid #b8d2ec;border-radius:7px;font-size:12px;font-weight:600;color:#155184;transition:background .2s,transform .2s}
+.community-links .community-feedback{background:#0769d8;border-color:#0769d8;color:white}
+.community-links a:hover{background:#e1effe;transform:translateY(-1px)}.community-links .community-feedback:hover{background:#0758b3}
+@media(max-width:760px){.community-links{justify-content:stretch;gap:9px;padding-block:12px}.community-links a{flex:1;gap:15px;font-size:11px;padding:11px 10px}}
+@media(prefers-reduced-motion:reduce){.community-links a{transition:none}.community-links a:hover{transform:none}}
