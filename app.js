@@ -24,7 +24,7 @@ for (const [index, tab] of tabs.entries()) {
 
 const markers = {
   elementary: 'Elementary', preschool: 'Preschool',
-  'senior-high': 'Senior High School', campus: 'Campus overview'
+  'senior-high': 'Senior High School'
 };
 const dialog = document.getElementById('marker-dialog');
 const fullMarker = document.getElementById('full-marker');
