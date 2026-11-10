@@ -28,7 +28,7 @@ export function renderRelease(doc, release, stale = false) {
   const android = release.notes.match(/Android\s+(\d+(?:\.\d+)?)\+/i);
   const requirements = [];
   if (android) requirements.push(`Android ${android[1]}+`);
-  if (/32-bit|ARMv7/i.test(release.notes)) requirements.push('32-bit ARM');
+  if (/32-bit|ARMv7|ARM32|armeabi-v7a/i.test(release.notes)) requirements.push('32-bit ARM');
   if (/64-bit|ARM64/i.test(release.notes)) requirements.push('64-bit ARM');
   if (/OpenGL ES\s*3/i.test(release.notes)) requirements.push('OpenGL ES 3');
   doc.getElementById('release-requirements').textContent = (requirements.length ? requirements.join(' · ') : 'Check the release notes for device requirements.') + ' · Camera AR needs an ARCore-supported device.';
@@ -73,6 +73,17 @@ export function initializeDownloadCounter(doc = document) {
   const refresh = doc.getElementById('refresh-download-count');
   const metric = doc.getElementById('download-metric');
   if (!value || !status || !refresh || !metric) return;
+  // The bundled link comes from a signature-verified APK. An old per-origin
+  // browser cache must never replace it with an earlier release while loading.
+  const bundledUrl = doc.getElementById('apk-download')?.href;
+  const bundledRequirements = doc.getElementById('release-requirements')?.textContent;
+  const bundledVersion = bundledUrl?.match(/\/download\/v?(\d+)\.(\d+)\.(\d+)[^/]*\//)?.slice(1).map(Number);
+  function olderThanBundle(release) {
+    const version = release?.tag?.match(/^v?(\d+)\.(\d+)\.(\d+)/)?.slice(1).map(Number);
+    if (!version || !bundledVersion) return false;
+    for (let i=0;i<3;i++) if (version[i]!==bundledVersion[i]) return version[i]<bundledVersion[i];
+    return false;
+  }
   let cached = null, running = false;
   try {
     const stored = JSON.parse(localStorage.getItem(cacheKey));
@@ -83,7 +94,15 @@ export function initializeDownloadCounter(doc = document) {
     const when = new Date(data.checkedAt).toLocaleString(undefined, {month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});
     status.textContent = stale ? `Last known GitHub total · ${when}` : `GitHub total · checked ${when}`;
     metric.dataset.state = stale ? 'cached' : 'ready';
-    renderRelease(doc, data.latest, stale);
+    if (olderThanBundle(data.latest)) {
+      const releaseStatus = doc.getElementById('release-check-status');
+      if (releaseStatus) releaseStatus.textContent = 'Using the newer verified download bundled with this website.';
+    } else {
+      renderRelease(doc, data.latest, stale);
+      if (data.latest?.apkUrl === bundledUrl && bundledRequirements) {
+        doc.getElementById('release-requirements').textContent = bundledRequirements;
+      }
+    }
   }
   async function update(force = false) {
     if (running) return;
