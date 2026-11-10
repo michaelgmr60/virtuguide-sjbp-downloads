@@ -1,8 +1,8 @@
 {
-  "version": "1.0.16",
-  "versionCode": 17,
-  "bytes": 311376080,
-  "sha256": "7f7d2d374755736b303f56d23e02a4643c6fa5faf7ec28125729826d76a25501",
+  "version": "1.0.18",
+  "versionCode": 19,
+  "bytes": 313481252,
+  "sha256": "f7ef31fa1030609ec09291523507fbb1e7a3f148c55c897fd8c7f37a0a8b853f",
   "minimumAndroid": 8,
   "architecture": "arm64-v8a, armeabi-v7a",
   "architectures": [
@@ -10,7 +10,7 @@
     "armeabi-v7a"
   ],
   "arRequired": false,
-  "apkUrl": "https://github.com/michaelgmr60/virtuguide-sjbp-downloads/releases/download/v1.0.16-alpha.20261110/VirtuGuide-SJBP.apk",
-  "releaseUrl": "https://github.com/michaelgmr60/virtuguide-sjbp-downloads/releases/tag/v1.0.16-alpha.20261110",
+  "apkUrl": "https://github.com/michaelgmr60/virtuguide-sjbp-downloads/releases/download/v1.0.18-alpha.20261111/VirtuGuide-SJBP.apk",
+  "releaseUrl": "https://github.com/michaelgmr60/virtuguide-sjbp-downloads/releases/tag/v1.0.18-alpha.20261111",
   "deviceTested": false
 }
