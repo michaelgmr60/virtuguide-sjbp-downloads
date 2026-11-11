@@ -1,0 +1,20 @@
+/* The browser updates these bounds on rotation, cutout changes and browser chrome changes. */
+:root{--phone-left:env(safe-area-inset-left,0px);--phone-right:env(safe-area-inset-right,0px);--phone-top:env(safe-area-inset-top,0px);--phone-bottom:env(safe-area-inset-bottom,0px)}
+body{padding-left:var(--phone-left);padding-right:var(--phone-right);padding-top:var(--phone-top);padding-bottom:var(--phone-bottom)}
+html{scroll-padding-top:calc(22px + var(--phone-top))}
+header,nav,.header-actions,.actions,.admissions-actions,.admissions-contact,footer{flex-wrap:wrap}
+.hero>*,.download-grid>*,.admissions-heading>*,.section-head>*,.faq>*,.visit-card-body,.count-heading>*{min-width:0}
+.button{max-width:100%;overflow-wrap:anywhere;text-align:center}
+.release-notes pre,.admissions-contact a,.visit-card-body a{overflow-wrap:anywhere;white-space:pre-wrap}
+.marker-dialog{max-width:calc(100% - 32px);max-height:calc(100dvh - var(--phone-top) - var(--phone-bottom) - 32px);overflow:auto;overscroll-behavior:contain}
+@media(max-width:600px){
+  .hero .actions .button{padding-inline:12px;gap:10px;min-height:48px}
+  header nav{gap:12px 20px}
+  .header-actions{gap:12px}
+  .count-heading{flex-wrap:wrap}
+}
+@media(max-width:340px){
+  .hero .actions{grid-template-columns:minmax(0,1fr)}
+  .hero .actions .hero-enrollment{grid-column:auto;grid-row:auto}
+  .school-photo-grid{grid-template-columns:minmax(0,1fr)}
+}

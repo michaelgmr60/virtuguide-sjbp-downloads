@@ -10,7 +10,7 @@
     "armeabi-v7a"
   ],
   "arRequired": false,
-  "apkUrl": "https://github.com/michaelgmr60/virtuguide-sjbp-downloads/releases/download/v1.0.20-alpha.20261111/VirtuGuide-SJBP.apk",
-  "releaseUrl": "https://github.com/michaelgmr60/virtuguide-sjbp-downloads/releases/tag/v1.0.20-alpha.20261111",
+  "apkUrl": "https://github.com/michaelgmr60/virtuguide-sjbps-downloads/releases/download/v1.0.20-alpha.20261111/VirtuGuide-SJBPS.apk",
+  "releaseUrl": "https://github.com/michaelgmr60/virtuguide-sjbps-downloads/releases/tag/v1.0.20-alpha.20261111",
   "deviceTested": false
 }

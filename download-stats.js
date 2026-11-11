@@ -1,6 +1,6 @@
 // Counts GitHub-served APK downloads across public releases. No click tracking,
 // visitor identifiers or client-side increments are used.
-const repository = 'michaelgmr60/virtuguide-sjbp-downloads';
+const repository = 'michaelgmr60/virtuguide-sjbps-downloads';
 const firstPage = `https://api.github.com/repos/${repository}/releases?per_page=100`;
 const cacheKey = 'virtuguide.github-downloads.v2';
 const cacheAge = 5 * 60 * 1000;
