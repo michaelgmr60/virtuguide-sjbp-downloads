@@ -2,7 +2,7 @@
 // visitor identifiers or client-side increments are used.
 const repository = 'michaelgmr60/virtuguide-sjbps-downloads';
 const firstPage = `https://api.github.com/repos/${repository}/releases?per_page=100`;
-const cacheKey = 'virtuguide.github-downloads.v2';
+const cacheKey = `virtuguide.github-downloads.v3.${repository}`;
 const cacheAge = 5 * 60 * 1000;
 
 // Include prereleases: the app is distributed as a public alpha.
@@ -87,7 +87,11 @@ export function initializeDownloadCounter(doc = document) {
   let cached = null, running = false;
   try {
     const stored = JSON.parse(localStorage.getItem(cacheKey));
-    if (stored && Number.isSafeInteger(stored.count) && stored.count >= 0 && Number.isFinite(stored.checkedAt) && stored.checkedAt <= Date.now()) cached = stored;
+    if (stored && Number.isSafeInteger(stored.count) && stored.count >= 0 && Number.isFinite(stored.checkedAt) && stored.checkedAt <= Date.now()) {
+      const prefix=`https://github.com/${repository}/releases/`;
+      const latest=stored.latest?.apkUrl?.startsWith(prefix+'download/') && stored.latest?.releaseUrl?.startsWith(prefix+'tag/') ? stored.latest : null;
+      cached={...stored,latest};
+    }
   } catch { /* Storage can be disabled. The live counter still works. */ }
   function show(data, stale = false) {
     value.textContent = new Intl.NumberFormat('en').format(data.count);
